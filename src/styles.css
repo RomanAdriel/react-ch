@@ -1,0 +1,22 @@
+header {
+    height: 50vh;
+    background: url("../public/index-hero.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    box-shadow: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+nav a {
+    margin: 5px;    
+}
+
+footer {
+    font-family: "Ubuntu";
+    padding: 5px;
+    background-image: linear-gradient(to left, rgb(122, 122, 122), rgb(245, 245, 245));;
+}
