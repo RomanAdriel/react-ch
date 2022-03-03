@@ -1,3 +1,8 @@
+button {
+    background-color: rgba(0,0,0, .5);
+    color:rgb(245, 245, 245)
+}
+
 header {
     height: 50vh;
     background: url("../public/index-hero.jpg") no-repeat;
@@ -11,12 +16,21 @@ header {
     
 }
 
-nav a {
-    margin: 5px;    
-}
-
 footer {
     font-family: "Ubuntu";
     padding: 5px;
     background-image: linear-gradient(to left, rgb(122, 122, 122), rgb(245, 245, 245));;
+}
+
+nav a {
+    margin: 5px;    
+}
+
+p {
+    padding: 15px;
+    margin: 1px;
+}
+
+.productCounter {
+    display: flex;
 }
