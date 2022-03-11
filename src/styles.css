@@ -22,6 +22,11 @@ footer {
     background-image: linear-gradient(to left, rgb(122, 122, 122), rgb(245, 245, 245));;
 }
 
+img {
+    width: 100px;
+    height: auto;
+}
+
 nav a {
     margin: 5px;    
 }
@@ -31,6 +36,22 @@ p {
     margin: 1px;
 }
 
+.productCard {
+
+    border: solid 1px black;
+    padding: 15px;
+    
+}
+
 .productCounter {
     display: flex;
 }
+
+.productContainer {
+    display: flex;
+    justify-content: space-around;
+    margin: 15px 0px;
+    
+
+}
+
