@@ -12,18 +12,21 @@ const ItemListContainer = (props) => {
     let initialProducts = [
         {
             id: 1,
-            nombre: "First Product",
-            precio: 1000
+            naem: "First Product",
+            price: 1000,
+            image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
         },
         {
             id: 2,
-            nombre: "Second Product",
-            precio: 2000
+            name: "Second Product",
+            price: 2000,
+            image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
         },
         {
             id: 3,
-            nombre: "Third Product",
-            precio: 3000
+            name: "Third Product",
+            price: 3000,
+            image: "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg"
         }
     ]
 
