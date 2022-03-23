@@ -1,57 +1,125 @@
-button {
-    background-color: rgba(0,0,0, .5);
-    color:rgb(245, 245, 245)
-}
-
 header {
-    height: 50vh;
-    background: url("../public/index-hero.jpg") no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    box-shadow: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	background-color: black;
+	box-shadow: 0 2px 5px rgb(0 0 0 / 50%);
+	-webkit-user-select: none;
+	user-select: none;
+	z-index: 1;
+	padding: 0 10%;
+}
+header h1 {
+	padding: 0;
+	margin: 0;
+	font-size: 36pt;
+}
+header a {
+	text-decoration: none;
+	color: orange;
+	cursor: pointer;
 }
 
-footer {
-    font-family: "Ubuntu";
-    padding: 5px;
-    background-image: linear-gradient(to left, rgb(122, 122, 122), rgb(245, 245, 245));;
+.moto {
+	font-weight: 200;
+	font-style: italic;
+	color: white;
+	margin: 0;
+	top: -0.5em;
+  position: relative;
+}
+p.title {
+	margin: .75em 1em 0.2em 0.5em;
+	font-weight: bold;
 }
 
-img {
-    width: 100px;
-    height: auto;
+ul.navbar-nav {
+	display: flex;
+	justify-content: space-around;
+	padding: 0;
 }
 
-nav a {
-    margin: 5px;    
+li.nav-item {
+	display: table-cell;
+	position: relative;
+	list-style-type: none;
+	padding: .75em;
+	margin: auto 1em;
+	border: 1px solid orange;
+	border-radius: 8px;
+	color: white;
+	cursor: pointer;
+	transition: all .2s ease;
+	height: 71px;
 }
 
-p {
-    padding: 15px;
-    margin: 1px;
+li.nav-item:hover {
+	background-color: orange;
+}
+li.nav-item:hover > a {
+	color: white;
+	font-weight: bold;
+}
+a.nav-link::before {
+	display: block;
+	content: attr(data-text);
+	font-weight: bold;
+	height: 0;
+	overflow: hidden;
+	visibility: hidden;
 }
 
-.productCard {
+article {
+	display: flex;
+	flex-direction: column;
+ 
+ height: auto;
+ padding: .4em;
+ align-items:center
+}
+/*article span.article--stock{
+	align-self: flex-end;
+	padding: 0 .5em;
+	border-radius: 10px;
+	background-color: lightslategray;
+	color: white;
+	font-style: italic;
+	font-size: small;
+}*/
 
-    border: solid 1px black;
-    padding: 15px;
-    
+.resultonadd{
+	background-color: rgb(110, 214, 117);
+	font-weight: bold;
+	margin-top: .5em;
+	padding: 0 .25em;
 }
 
-.productCounter {
-    display: flex;
+
+.ItemDetailContainerBox{
+	display: flex;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	backdrop-filter: blur(8px); 
 }
 
-.productContainer {
-    display: flex;
-    justify-content: space-around;
-    margin: 15px 0px;
-    
-
+.closeButton{
+	display: flex;
+	position: absolute;
+	top: 10%;
+	right: 10%;
+	width: 1em;
+	height: 1em;
+	
 }
 
+/* LOADER */
+.loader {
+	margin: auto;
+}

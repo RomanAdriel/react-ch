@@ -1,26 +1,32 @@
 import React, {useEffect, useState} from 'react'
+import { useParams } from 'react-router-dom'
+import { InfinitySpin } from 'react-loader-spinner'
 
 import ItemDetail from './ItemDetail'
+import productsFetched from './products.json'
 
-const ItemDetailContainer = (props) => {
-
+const ItemDetailContainer = ({setCartItems, cartItems}) => {
 	const [product, setProduct] = useState()
-
+	const [loading, setLoading] = useState(true)
+	let { itemID } = useParams()
+	
 	useEffect(() => {
-		
+		setLoading(true)
 		const request = new Promise((res, rej) => {
-			setTimeout(() => { res(props) }, 2000)
+			setTimeout(() => { res(productsFetched) }, 2000)
 		})
 	
 		request.then((result) => {
-			setProduct(result)
+			setProduct( itemID==undefined?[]:result.filter( (value) => value.id == itemID ) )
+			setLoading(false)
 		})	
-	}, [props])
+
+	}, [itemID])
 	
 	return (
-		<div>
-			<ItemDetail {...product} />
-		</div>
+		<>
+			{ loading?<div className='container'><InfinitySpin color="orange" /></div>:<ItemDetail {...product[0]} setCartItems={setCartItems} cartItems={cartItems} /> }
+		</>
 	)
 }
 
