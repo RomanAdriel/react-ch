@@ -1,24 +1,21 @@
-import React from 'react'
-import { useState } from 'react'
-import ItemDetailContainer from './ItemDetailContainer'
+import React, { useState } from 'react'
+import { useNavigate, Navigate, useLocation, Link } from 'react-router-dom'
+import './Item.scss'
 
-const Item = ({ product }) => {
-
-    const [showDetails, setShowDetails] = useState( false )
-
-	const isDetails = () => { 
-		setShowDetails(!showDetails)
-    }
-
-    return (
-        <div className="productCard">
-            <h2>{product.name}</h2>
-            <img src={product.image}/>
-            <p>Precio : ${product.price}</p>
-            <button onClick={ isDetails } >Ver detalles del producto</button>
-            { showDetails?<ItemDetailContainer {...product} callBack={ isDetails }/>:null }	
-        </div>
-    )
+const Item = (props) => {
+	const navigate = useNavigate()
+	let location = useLocation()
+	const click = () => { navigate(`/product/${props.id}`) }
+	
+	return (
+		<article className='card card-shadow'>
+			<h2>{props.title}</h2>
+			<img src={props.pictureUrl} />
+			<span>Stock: <b>{props.stock}</b></span>
+			<span className='price'>$<b>{props.price}</b></span>
+			<button onClick={ click }>DETAILS</button>
+		</article>
+	)
 }
 
 export default Item
