@@ -1,12 +1,22 @@
 import React from 'react'
+import { useState } from 'react'
+import ItemDetailContainer from './ItemDetailContainer'
 
 const Item = ({ product }) => {
+
+    const [showDetails, setShowDetails] = useState( false )
+
+	const isDetails = () => { 
+		setShowDetails(!showDetails)
+    }
+
     return (
         <div className="productCard">
-            <h2>{product.nombre}</h2>
-            <img src="https://http2.mlstatic.com/D_NQ_NP_2X_820778-MLA47861063417_102021-F.webp"/>
-            <p>Precio : ${product.precio}</p>
-            <p>Ver detalle del producto</p>
+            <h2>{product.name}</h2>
+            <img src={product.image}/>
+            <p>Precio : ${product.price}</p>
+            <button onClick={ isDetails } >Ver detalles del producto</button>
+            { showDetails?<ItemDetailContainer {...product} callBack={ isDetails }/>:null }	
         </div>
     )
 }
