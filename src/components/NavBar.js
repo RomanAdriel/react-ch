@@ -3,8 +3,7 @@ import { Link, NavLink } from 'react-router-dom'
 
 import CartWidget from './CartWidget';
 
-const NavBar = ({cartItems}) => {
-	console.warn(cartItems)
+const NavBar = () => {
 
 	return (<>
 		<header>
@@ -29,7 +28,7 @@ const NavBar = ({cartItems}) => {
 						<NavLink className="nav-link" data-text="jewelery" to='/category/jewelery'>Jewelery</NavLink>
 					</li>
 					<li className="nav-item">
-					<NavLink className="nav-link" data-text="X" to='cart'><CartWidget cartItems={cartItems}/></NavLink>
+					<NavLink className="nav-link" data-text="X" to='cart'><CartWidget /></NavLink>
 					</li>
 				</ul>
 			</nav>

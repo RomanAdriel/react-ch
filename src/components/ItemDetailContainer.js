@@ -5,7 +5,7 @@ import { InfinitySpin } from 'react-loader-spinner'
 import ItemDetail from './ItemDetail'
 import productsFetched from './products.json'
 
-const ItemDetailContainer = ({setCartItems, cartItems}) => {
+const ItemDetailContainer = () => {
 	const [product, setProduct] = useState()
 	const [loading, setLoading] = useState(true)
 	let { itemID } = useParams()
@@ -25,7 +25,7 @@ const ItemDetailContainer = ({setCartItems, cartItems}) => {
 	
 	return (
 		<>
-			{ loading?<div className='container'><InfinitySpin color="orange" /></div>:<ItemDetail {...product[0]} setCartItems={setCartItems} cartItems={cartItems} /> }
+			{ loading?<div className='container'><InfinitySpin color="orange" /></div>:<ItemDetail {...product[0]} /> }
 		</>
 	)
 }
