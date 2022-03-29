@@ -1,9 +1,12 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { Link, NavLink } from 'react-router-dom'
 
 import CartWidget from './CartWidget';
+import { contextFromCart } from '../context/CartContext';
 
 const NavBar = () => {
+
+	const {quantity} = useContext(contextFromCart)
 
 	return (<>
 		<header>
@@ -27,7 +30,7 @@ const NavBar = () => {
 					<li className="nav-item">
 						<NavLink className="nav-link" data-text="jewelery" to='/category/jewelery'>Jewelery</NavLink>
 					</li>
-					<li className="nav-item">
+					<li className="nav-item" style={{ visibility: quantity==0 && 'hidden' }}>
 					<NavLink className="nav-link" data-text="X" to='cart'><CartWidget /></NavLink>
 					</li>
 				</ul>

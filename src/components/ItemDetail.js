@@ -10,7 +10,7 @@ const ItemDetail = ({id, pictureUrl, title, description, price, stock}) => {
 	const [itemStock, setItemStock] = useState(stock)
 	
   const onAdd = (value) => {
-		toast.success(value>1?"Productos agregados al carrito.":"Producto agregado al carrito.")
+		toast.success(value>1?"Product added to the cart":"Product added to the cart")
 		setItemStock(itemStock-value)
 		addItem(id, value, title, price)
 	};
