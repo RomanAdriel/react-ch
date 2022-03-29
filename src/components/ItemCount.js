@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import './ItemCount.scss'
 
 
-const ItemCount = ({initial, stock, onAdd, cartItems}) => {
+const ItemCount = ({initial, stock, onAdd, quantity}) => {
 
 	const [initialValue, setInitialValue] = useState( initial )
 	const navigate = useNavigate()
@@ -33,7 +33,7 @@ const ItemCount = ({initial, stock, onAdd, cartItems}) => {
 					<span className="material-icons-outlined">shopping_cart</span>
 					<span>ADD</span>
 			</button>
-			<button className='itemCount__controls--big' onClick={ () => navigate('/cart')  } disabled={ cartItems==0 }>
+			<button className='itemCount__controls--big' onClick={ () => navigate('/cart')  } disabled={ quantity==0 }>
 					<span className="material-icons-outlined">shopping_bag</span>
 					<span>FINISH SHOPPING</span>
 			</button>
