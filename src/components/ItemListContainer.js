@@ -1,26 +1,27 @@
 import React, {useEffect, useState} from 'react'
 import {InfinitySpin }  from 'react-loader-spinner'
 import { useParams } from 'react-router-dom'
+import { getDocs, query , where } from 'firebase/firestore'
 
-import ItemList from './ItemList'
-import productsFetched from './products.json'
+import { fbCollection } from '../firebase'
+import ItemList from './ItemList'	
 
 const ItemListContainer = () => {
 
-	const [products, setProducts] = useState()
+	const [products, setProducts] = useState({})
 	const [loading, setLoading] = useState(true)
 	let { catID } = useParams()
 
 	useEffect(() => { 
-		const request = new Promise((res, rej) => {
+		const q = catID?query(fbCollection, where('category', '==', catID)):query(fbCollection)
+
+		const documents = getDocs(q)
+		documents.then( (res) => {
 			setLoading(true)
-			setTimeout(() => { res(productsFetched) }, 2000)
+			setProducts( res.docs.map( doc => doc.data() ) )
 		})
 	
-		request.then((result) => {
-			setProducts( 
-				catID==undefined?result:result.filter( (value) => value.category == catID )
-			)
+		documents.finally( () => {
 			setLoading(false)
 		})
 	}, [catID])
