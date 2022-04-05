@@ -1,5 +1,8 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { dbFirestore } from "../firebase"
+import toast from "react-hot-toast";
+import { collection, serverTimestamp, addDoc } from "firebase/firestore"
 
 import { contextFromCart } from '../context/CartContext';
 import "./Cart.scss";
@@ -7,6 +10,26 @@ import "./Cart.scss";
 const Cart = () => {
 
 const { cart, total, removeItem, clearCart } = useContext(contextFromCart);
+
+const finishPurchase = () => {
+  const order = {
+    buyer: {
+      name: "",
+      phone: "",
+      mail: ""
+    },
+    items: cart,
+    date: serverTimestamp(),
+    total: total
+  }
+  const orderCollection = collection(dbFirestore, "order")
+  const request = addDoc(orderCollection, order)
+  toast.success("Order created!")
+
+  request
+    .then(res => console.log(res))
+    .catch(error => console.log(error))
+}
 
 return (
     <div className="cart">
@@ -38,6 +61,7 @@ return (
 			{cart.length>0 && <div className="checkout">
 				<h2>Checkout</h2>
 				<div className="bigtotal">Total: <span>${Intl.NumberFormat('es-AR').format(total)}</span></div>
+        <button onClick={finishPurchase}>Finish shopping</button>
 			</div>}
     </div>
   );
