@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom'
 import { InfinitySpin } from 'react-loader-spinner'
+import { getDocs, query , where } from 'firebase/firestore'
 
+import { fbCollection , dbFirestore } from '../firebase'
 import ItemDetail from './ItemDetail'
-import productsFetched from './products.json'
 
 const ItemDetailContainer = () => {
 	const [product, setProduct] = useState()
@@ -11,21 +12,21 @@ const ItemDetailContainer = () => {
 	let { itemID } = useParams()
 	
 	useEffect(() => {
-		setLoading(true)
-		const request = new Promise((res, rej) => {
-			setTimeout(() => { res(productsFetched) }, 2000)
+		const document = getDocs(query(fbCollection, where('id', '==', parseInt(itemID) )))
+		document.then( (res) => {
+			setLoading(true)
+			setProduct( res.docs[0].data() )
 		})
 	
-		request.then((result) => {
-			setProduct( itemID==undefined?[]:result.filter( (value) => value.id == itemID ) )
+		document.finally( () => {
 			setLoading(false)
 		})	
 
 	}, [itemID])
 	
 	return (
-		<>
-			{ loading?<div className='container'><InfinitySpin color="orange" /></div>:<ItemDetail {...product[0]} /> }
+		<> { console.log(product)}
+			{ loading?<div className='container'><InfinitySpin color="orange" /></div>:<ItemDetail { ...product } /> }
 		</>
 	)
 }
